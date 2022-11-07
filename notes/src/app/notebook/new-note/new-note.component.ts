@@ -8,8 +8,12 @@ import { Note } from 'src/app/interfaces/note.interface';
 })
 export class NewNoteComponent implements OnInit {
 
+  /* Variable para el texto de cada nota que se haga*/
   note: string = '';
-  count: number = 0;
+  /* Variable que será el ID incremental para cada tarea que se haga*/
+  countNote: number = 0;
+
+  /* Evento que se usa para envíar la nota al componente padre (AppComponent) */
   @Output() sendNote = new EventEmitter<Note>();
 
   constructor() { }
@@ -18,17 +22,19 @@ export class NewNoteComponent implements OnInit {
 
   }
 
-  /* Método del botón agregar: Se envía el contenido de la nota al componente padre */
+  /* Método que se llama al dar clic en el botón Add */
   submit(){
 
     if(this.note != ''){
       let newNote : Note = {
-        id: this.count,
+        id: this.countNote,
         note: this.note,
         date: new Date(),
-        complete: false
+        complete: false,
+        hover: false
       }
-      this.count++;
+      this.countNote++;
+      this.note = '';
       this.sendNote.emit(newNote);
     }
 
