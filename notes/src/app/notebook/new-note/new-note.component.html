@@ -1,0 +1,18 @@
+<textarea
+  id="text-note"
+  rows="4"
+  class="design-text-area"
+  placeholder="Type your new TODO..."
+  [(ngModel)]="note"
+  name="note"
+></textarea>
+
+<br />
+
+<button
+  type="button"
+  class="design-button-add"
+  (click)="submit()"
+  >
+  Add
+</button>
